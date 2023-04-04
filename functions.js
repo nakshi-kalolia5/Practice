@@ -39,10 +39,51 @@
 
 // * scope (area of code in which the variable is accessible)
 //scopes are in the lexical scope (inside the brackets)
-var scope = "global"
-function scopeDemo() {
-    var scope = "function"
-    console.log(scope);
-}
-scopeDemo()
-console.log(scope);
+// var scope = "global"
+// function scopeDemo() {
+//     var scope = "function"
+//     console.log(scope); //function
+// }
+// scopeDemo()
+// console.log(scope); //global
+
+// * function expressions
+// function can be assigned to a variable as a value
+// var factorial = function fact(n) { //can't use fact while calling, it's optional
+//     var ans = 1;
+//     for (var i = 1; i <= n; i++) {
+//         ans *= i;
+//     }
+//     return ans
+// }
+// console.log(factorial(4))
+// if the name is not given to function it will take same name as variable
+// in case to use recursion better to give it a name
+
+// * function declaration vs function Expression
+// function hoisting can't work with function expression, because there has variable hoisting
+// Example
+// console.log(factorial(5)) //uncaught type error factorial is not a function
+// console.log(factorial)    //undefined
+// var factorial = function fact(n) {
+//     var ans = 1
+//     for(var i=1;i<=n;i++){
+//         ans *= i
+//     }
+//     return ans
+// };
+
+// * passing function as function argument
+// var factorial = function fact(n) {
+//     var ans = 1
+//     for(var i=1;i<=n;i++){
+//         ans *= i
+//     }
+//     return ans
+// }
+
+// function ncr(n, r, factorial) {
+//     return factorial(n)/ (factorial(r) * factorial(n - r))
+// }
+
+// console.log(ncr(5,2, factorial));
