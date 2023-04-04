@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Demo Js Variables</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		var a ="abc"
+		document.write("<p>"+a+"</p>")
+		a=6
+		document.write("<p>"+a+"</p>")
+
+		let b ="gffds"
+		document.write("<p>"+b+"</p>")
+		b=1210
+		document.write("<p>"+b+"</p>")
+
+		// const c ="hd"
+		// document.write("<p>"+b+"</p>")
+		// c=1210 // assignment to cosntant variable error
+		// document.write("<p>"+b+"</p>")
+
+
+		//hoisting - using variable or function before declareing
+		a = 5
+		document.write("<p>"+a+"<p>")
+		var a;
+
+		nullVal= null
+		undefined = undefined //undefined take as variable name without any error
+		document.write(nullVal+undefined)// return NaN
+
+		var a1 = "hi"
+		{
+			var a1 = "hello"
+			document.write("<p>"+a1+"<p>")  // hello
+		}
+		document.write("<p>"+a1+"<p>")  // hello
+
+		let a2 = "hi" // or var a2 = "hi" 
+		{
+			let a2 = "hello" 
+			document.write("<p>"+a2+"<p>")  // hello
+		}
+		document.write("<p>"+a2+"<p>") // hi
+		
+				
+		// let a ="a"      //Identifier 'a' has already been declared error
+		// const a ="b"	//Identifier 'a' has already been declared error
+		// document.write(a) 
+
+	</script>
+</body>
+</html>
