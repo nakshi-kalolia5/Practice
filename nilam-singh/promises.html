@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+            const myPromise = new Promise((resolve, reject) => {
+              setTimeout(() => {
+                reject(new Error("Error!!"));
+              }, 300);
+            });
+            
+            myPromise
+              .then(()=> {
+                  throw "oh no!";  // execute 1st
+              })
+              .catch(function(error) {
+                  console.log(error)  // print thrown error 2nd
+              })
+              .then((value) => {  // execute 3rd
+                console.log(value);  
+              })
+              .catch(function(error) {  //not execute as catched by previous catch block
+                  console.log(error)
+              })
+
+
+            function getUserById(id) {
+                if (typeof id !== 'number' || id <= 0) {
+                    throw new Error('Invalid id argument');
+                }
+
+                return new Promise((resolve, reject) => {
+                    resolve({
+                         id: id,
+                         username: 'admin'
+                    });
+                    // reject(new Error("Get By ID Error!!"))
+                });
+            }
+
+            try {
+                getUserById(1)
+                    .then(user => console.log(user)) //print
+                    .catch(err => console.log(`Caught by .catch ${err}`)) //if reject
+                    .then(user => console.log(user))  //undefined
+            } catch (error) {
+                console.log(`Caught by try/catch ${error}`);  //print if throw error
+            }
+            </script>
+    </body>
+</html>

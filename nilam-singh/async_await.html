@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <p id="demo"></p>
+        <script>
+
+            function print(some) {
+                console.log(some);
+            }
+            async function demo() {
+                return "Hello";
+            }
+            demo().then(
+                function(value) {print(value);},
+                function(error) {print(error);}
+            );
+
+            
+            async function myDisplay() {
+            let myPromise = new Promise(function(resolve) {
+                resolve("I love You !!");
+            });
+            document.getElementById("demo").innerHTML = await myPromise;
+            }
+
+            myDisplay();
+
+            async function fn() {
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(() => resolve("Done!"), 1000)
+            });
+            let res = await promise; // wait until the promise resolves (*)
+            console.log(res); // "Done!"
+            }
+            fn();
+
+
+
+            //weekly program
+            function sum(num1,num2){
+                return num1+num2
+            }
+            async function asyncSum(num1,num2){
+                let 
+                sum=num1+num2
+                if(sum <= 0){
+                    result = Promise.reject("error")
+                }
+                else{
+                    result = num1+num2
+                }
+                return result
+                
+            }
+
+            console.log(sum(1,2))
+            result = asyncSum(2,2)
+            result.then(
+                (val) => console.log(val)
+            )
+            .catch(
+                (err)=> console.error("promise error",err)
+            )
+
+            result = asyncSum(2,-2)
+            result.then(
+                (val) => console.log(val)
+            )
+            .catch(
+                (err)=> console.error("promise error",err)
+            )
+            // console.log(asyncSum(2,2).then((val)=> console.log(val).catch((err)=> cosnole.log(err)))) 
+
+        </script>
+    </body>
+</html>

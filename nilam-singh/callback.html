@@ -1,0 +1,21 @@
+<html>
+    <head></head>
+    <body>
+        <script>
+            const myNumbers = [4, 1, -20, -7, 5, 9, -6];
+            const posNumbers = removeNeg(myNumbers, (x) => x >= 0);  // arrow function passed as callback
+
+            console.log(posNumbers);
+
+            function removeNeg(numbers, callback) {
+            const myArray = [];
+            for (const x of numbers) {  //push items of numbers based on arrow function condition - x>=0 non negative numbers only
+                if (callback(x)) {
+                myArray.push(x);
+                }
+            }
+            return myArray;
+            }
+        </script>
+    </body>
+</html>
