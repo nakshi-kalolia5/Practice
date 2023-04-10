@@ -31,21 +31,26 @@
                 }
 
                 return new Promise((resolve, reject) => {
-                    resolve({
-                         id: id,
-                         username: 'admin'
-                    });
-                    // reject(new Error("Get By ID Error!!"))
+                    // resolve({
+                    //      id: id,
+                    //      username: 'admin'
+                    // });
+                    
+                    //throw new Error("promise throw erro")// handled by promise catch
+                    reject(new Error("Get By ID Error!!")) //handled by promise catch
                 });
             }
 
             try {
                 getUserById(1)
-                    .then(user => console.log(user)) //print
-                    .catch(err => console.log(`Caught by .catch ${err}`)) //if reject
+                    .then(user => {
+                        console.log(user) //print
+                        throw new Error("invalid user")
+                    })
+                    .catch(err => console.log(`Caught by .catch ${err}`)) //if reject  or print if thrown error by .then function
                     .then(user => console.log(user))  //undefined
             } catch (error) {
-                console.log(`Caught by try/catch ${error}`);  //print if throw error
+                console.log(`Caught by try/catch ${error}`);  //print if throw error by function
             }
             </script>
     </body>

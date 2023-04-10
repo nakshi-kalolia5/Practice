@@ -1,0 +1,22 @@
+<script>
+    console.time("console")
+
+    console.log("console log")//default white
+    console.info("console info")//default white
+    console.error("console error")//red
+    console.warn("console warn")//yellow
+    //if assert success nothing print
+    console.assert(55>56) //Assertion failed: console.assert
+    
+    console.timeEnd("console")//label must be same will return time required
+    
+    //console.clear() //to clear console
+
+    //print table form
+    let obj = {
+        name : "abc",
+        id : 1
+    }
+    console.table(obj)
+
+</script>

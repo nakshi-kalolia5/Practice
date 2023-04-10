@@ -1,0 +1,77 @@
+<html>
+    <body>
+        <script>
+            let array1 = [1,2,"a"]
+            console.log(array1)
+            console.log(array1[0])
+            console.log("arrray length : ",array1.length)
+            
+            array1[0]="1d"
+            console.log(array1[0]) // 1d - changed value
+
+            console.log(typeof array1) // object
+
+            //array to string
+            let stringarray = array1.toString()
+            console.log(stringarray)//converted to string 1d,2..
+            
+            //join method
+            let num = [1,2,3,4]
+            let joined = num.join("-")
+            console.log(joined) //1-2-3-4 - string type
+
+            let poped = num.pop() // pop out last element from array and return poped value
+            console.log(num," popped value is: ",poped) //num - 1,2,3 popped value -4
+
+            let pushed = num.push(5) // pushed element to last to array and return length of array
+            console.log(num," pushed value is: ",pushed) //num - 1,2,3 length - 4
+
+            let shift = num.shift() //pop the fisrt element ,return poped length
+            console.log(num," shifted : ",shift) //2,3,5 shifted 1
+        
+            let unshift = num.unshift(55) //pop the fisrt element return array length
+            console.log(num," unshifted : ",unshift) //2,3,5 unshifted 4
+      
+            delete num[0] //delete operator - will delete data only
+            console.log(num, "length", num.length) // [empty,2,3,5] length 4
+
+            let num1 = [1,2,3,4]
+            let a= [11,22,33]
+            let b=[2,3,4]
+
+            let c= num1.concat(a,b) //concate all num1+a+b - returns new array
+            console.log(c) // [1, 2, 3, 4, 11, 22, 33, 2, 3, 4]
+
+            let arr = [22,2,6,10]
+            arr.sort()
+            console.log(arr) //[10, 2, 22, 6] alpahbeticaly sort - sort by fisrt digit 
+
+            let compare = (a,b) => {
+                return a - b //for decending order b-a
+            }
+            let arr1 = [22,2,6,10]
+            arr1.sort(compare)
+            console.log(arr1)// [2,6,10,22]
+
+            arr1.reverse()
+            console.log("reversed : ",arr1)
+
+            let arr2 = [551,22,3,14,6,71,229]
+            let deleted = arr2.splice(2,3,2001,2002) //start with 2nd position then delete 3 elements from that and then add the elements given after that
+            console.log(arr2, "deleted element : ",deleted) // [551, 22, 2001, 2002, 71, 229]
+
+            let newarr = arr1.slice(1,4) //return substring - start with 1 index upto 4 - excluding 4th
+            console.log("sliced array : ",newarr) // old - [22, 10, 6, 2], new - [10, 6, 2]
+
+            //insert user data until he enter 0
+            let ab = [1,2,3,4]
+            do{
+                let userinput = prompt("enter a no")
+                a =Number.parseInt(userinput)
+                ab.push(a)
+            }while(a!==0);
+            console.log("users enterd value added : ",ab)
+                
+      </script>
+    </body>
+</html>

@@ -1,0 +1,141 @@
+<html>
+    <body>
+
+    </body>
+    <script>
+        //-------------inside block scope
+        console.warn("Block Scope")
+
+        //same as var scope
+        undeclaredi="undeclared ab"
+        //var scope is upto current execution content and closure
+        var i= "var ab"
+
+        //let scope is upto declared block
+        let leti = "let ab"
+
+        //scope is same as let upto declared block
+        const consti = "const ab"
+        {
+            undeclaredi = "changed undeclared ab"
+            console.log(undeclaredi)  //changed undeclared ab
+
+            var i = "changed var ab"
+            console.log(i)  //changed var ab
+            
+            let leti ="changed let ab"
+            console.log(leti) //changed let ab
+
+            const consti = "changed const ab"
+            console.log(consti) //changed const ab
+        }
+        console.log(undeclaredi)  //changed undeclared ab
+        console.log(i) //changed var ab
+        console.log(leti) // let ab
+        console.log(consti) //const ab
+        
+        //-------------inside function scope (same for all)
+        console.warn("Function Scope")
+        var a = "var bcd"
+        let leta= "let bcd"
+        const consta= "const bcd"
+        function getData(){
+            var a="changed bcd"
+            console.log(a) //changed bcd
+            
+            let leta="changed let bcd"
+            console.log(leta) //changed let bcd
+
+            const consta="changed const bcd"
+            console.log(consta) //changed const bcd
+        }
+        getData()
+        console.log(a) //var bcd
+        console.log(leta) //let bcd
+        console.log(consta) //const bcd
+       
+        //-------------function scope, changing value
+        console.warn("Function Scope")
+        function getFunctionData(){
+            var f = "function var"
+            console.log(f) //function var
+
+            letf = "function let"
+            console.log(letf) //function let
+            
+            constf = "function const" 
+            console.log(constf)
+        }
+        getFunctionData()
+        // console.log(f) //error not defined
+        // console.log(letf) //error not defined
+        // console.log(constf) //error not defined
+
+        //-------------global scope, changing value
+        console.warn("Global Scope")
+        var b = "var efg"
+        let letb= "let efg"
+        const constb= "const efg"
+
+        function getGlobalData(){
+            b = "changed var efg"
+            console.log(b) //changed var efg
+
+            letb = "changed let efg"
+            console.log(letb) //changed let efg
+            
+            // constb = "changed const efg" //Type Error error, assignment to const var 
+            // console.log(constb)
+        }
+        getGlobalData()
+        console.log(b) //changed var bcd
+        console.log(letb) //changed let efg
+        console.log(constb) //cosnt efg
+
+        //-------------inside nested function scope, changing value
+        console.warn("Nested Function Scope")
+        //global variable
+        var n = "var n"
+        let letn= "let n"
+        const constn= "const n"
+
+        function getNestedFunData(){
+            //local variable
+            var n2 = "var n2"
+            console.log(n + " " + n2) // var n var n2
+
+            var letn2 = "let n2"
+            console.log(letn + " " + letn2) // let n let n2
+
+            var constn2 = "const n2"
+            console.log(constn + " " + constn2) // const n const n2
+
+            if(n2 == "var n2"){
+                var n3 = "var n3"
+                console.log(n + " " + n2 + " " + n3) // var n var n2 var n3
+            }
+
+            if(letn2 == "let n2"){
+                var letn3 = "let n3"
+                console.log(letn + " " + letn2 + " " + letn3) // let n let n2 let n3
+            }
+
+            if(constn2 == "const n2"){
+                var constn3 = "const n3"
+                console.log(constn + " " + constn2 + " " + constn3) // const n const n2 const n3
+            }
+
+            console.log(n + " " + n2 + " " + n3) // var n var n2 var n3
+            console.log(letn + " " + letn2 + " " + letn3)// let n let n2 let n3
+            console.log(constn + " " + constn2 + " " + constn3)// const n const n2 const n3
+            
+            // constb = "changed const efg" //Type Error error, assignment to const var 
+            // console.log(constb)
+        }
+        getNestedFunData()
+        // console.log(n + " " + n2 + " " + n3) //n2 and n3 are not acceced here
+        // console.log(letn + " " + letn2 + " " + letn3)// let n2 and let n3 are not accecced here
+        // console.log(constn + " " + constn2 + " " + constn3)// const n2 and const n3 not accessed here
+       
+       </script>
+</html>

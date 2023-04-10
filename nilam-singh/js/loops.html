@@ -1,0 +1,45 @@
+<html>
+    <body>
+        <script>
+            //for loop
+            console.warn("for loop")
+            for(let i=0; i<5; i++){
+                console.log(`hello ${i+1}`)
+            }
+
+            const marks = {
+                english : 80,
+                maths : 96,
+                science : 84,                
+            }
+
+            //for in loop
+            console.warn("for in loop")
+            for (let subMark in marks){
+                console.log("key: ",subMark, " value: ",marks[subMark])
+            }
+
+            //for of loop -- used only fro array or string which are iterable
+            console.warn("for in loop")
+            // for (let subMark of marks){ //error mark is not iterable
+            //     console.log("key: ",subMark, " value: ",marks[subMark])
+            // }
+            for (let subMark of "Hello"){
+                console.log(subMark)
+            }
+
+            let n=0;
+            while(n<5){
+                console.log(`while ${n+1}`)
+                n++;
+            }
+
+            //execute at least once wether or not condition is true
+            let i=10;
+            do{
+                console.log(`do while ${i+1}`)
+                i++;
+            }while(i<5)
+        </script>
+    </body>
+</html>

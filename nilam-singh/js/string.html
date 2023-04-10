@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <script>
+            let name="HELLO"
+
+            console.log(name.length)
+            console.log("Uppercase ",name.toUpperCase())
+            console.log("Lowercase",name.toLowerCase())
+
+            console.log(name.slice(2,5)) //starting with 2nd index upto 5 exclude 5th index
+            console.log(name.replace("L","M"))
+            console.log(name.concat(" User ","Welcome"))
+            
+            let text = "   fdsf   "
+            console.log(text)
+            console.log(text.trim())
+
+            //escape sequence character \n etc
+            let a = "He\"n"  // \" count as single character"
+            console.log(a.length) // 4
+
+            let sentence = "this is dummy"
+            console.log(sentence.includes("dummy")? "dummy available" : "dummy not available")
+        </script>
+    </body>
+</html>
