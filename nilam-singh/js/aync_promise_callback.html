@@ -1,0 +1,58 @@
+<html>
+    <head></head>
+    <body>
+        <script>
+        //callback
+        //function passed to function called callback
+        //good for single async fucntion
+        //goes to hell if dependent functions are there or nested inner functions are there
+        //error handling becomes also tough
+        const getData = (callback) => {  //getData passed as callback
+            setTimeout(() => {
+                callback({ name: 'Hello' }); //called after 2000 ms
+            }, 2000);
+        }
+         
+        getData((data) => {
+            console.log(data.name); //print Hello
+        });
+
+
+        //promise
+        //will give ability for error handling with resolve and reject
+        const getDataPromise = () => {
+            return new Promise(function(resolve,reject){
+                
+                //resolve(resolve({ name: 'Hello promise' }))
+
+                reject(new Error("Whoops!"))
+            });
+        }
+        
+        getDataPromise()
+            .then(data => console.log(data.name), //undefined if not resolved
+                err => console.error(err)); // Error handling in then()
+        
+        getDataPromise()
+            .then(data => console.log(data.name)) //undefined if not resolved
+            .catch(err => console.error("error in catch",err)) // Error handling using catch()
+
+        
+        //---------aync await
+        const getDataAsync = () => {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve({ name: 'hello async' });
+                }, 2000);
+            });
+        }
+    
+        const load = async () => {
+            const result = await getDataAsync(); // { name: 'hello async' }
+        }
+        load();
+        
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<html>
+    <body></body>
+</html>
+<script>
+    //callback hell
+    function printall(callback){
+        setTimeout(() => {
+            callback("a")
+            setTimeout(() => {
+                callback("b")
+            }, 500);
+        }, 200);
+    }
+
+    printall(printString)
+
+    //callback hell resolved using promise
+    // function printall(data){
+    //     return new Promise((resolve,reject) => {
+    //         setTimeout(() => {
+    //             resolve(data);
+    //         }, 1000);
+    //     })
+    // }
+
+    // function printString(data){
+    //     console.log(data)
+    // }
+
+    // let promiseA = printall("A")
+    // promiseA.then(
+    //     (data) => printString(data) 
+    // )
+
+    // let promiseB = printall("B")
+    // promiseB.then(
+    //     (data) => printString(data) 
+    // )
+
+    //second way
+    function printallPromise(data = ""){ 
+        return new Promise((resolve,reject) => {
+            if(data != ""){ 
+                setTimeout(() => {
+                    resolve(printString(data));
+                }, 1000); 
+            }
+            else{
+                throw new Error("Data is Empty")
+                //reject(new Error("Data is Empty")) //if data is "" then generate error
+            }
+        })
+    }
+
+    function printString(data){
+        console.log(data)
+    }
+
+    let promiseA = printallPromise("A") //printallPromise() for error
+    promiseA
+    .then(() => {
+        return printallPromise("B")
+    }).catch((err) => console.error(err))
+
+    
+    async function printAllAsync(){
+        try{
+            await printallPromise("AA")
+            await printallPromise("BB")
+        }
+        catch(error){
+            console.error("async error")
+        }      
+    }
+    printAllAsync()
+
+</script>

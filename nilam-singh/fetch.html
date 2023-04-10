@@ -1,0 +1,76 @@
+<script>
+    //fetch api returns promise, we need two .then as it return api response in the form of status and data,
+    //second .then will store final json data
+
+    let p = fetch("https://jsonplaceholder.typicode.com/todos/1")
+    p.then((response) => {
+            console.log(response.status) //this block used when you want to check when response is break
+            console.log(response.ok)
+            console.log(response.headers)
+            return response.json() //josn method returns a promise which resolves with the result of parsing the body text as JSON, return data as object
+    }).then((value2) => {
+            console.log(value2) //json() returned value as object
+    })
+
+    let p2 = fetch("https://jsonplaceholder.typicode.com/todos/90032")
+    p2.then((response) => {
+            console.log(response.status) //this block used when you want to check when response is break
+            console.log(response.ok)
+            console.log(response.headers)
+            return response.json()
+    }).then((value2) => {
+            console.log(value2)
+    })
+
+    //fetch for post api
+    const userData = {
+        method: 'POST',
+        body: JSON.stringify({ //generate string from obj
+            title: 'foo',
+            body: 'bar',
+            userId: 1,
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+    }
+    fetch('https://jsonplaceholder.typicode.com/posts', userData)
+    .then((response) => {
+        console.log(response.status)
+        return response.json()
+    })
+    .then((json) => console.log(json));
+
+    //fetch using async await
+    const CreateData = async (data) => {
+        let options = {
+            method: "POST",
+            headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+            },
+            body: JSON.stringify(data), //convert obj to string
+        }
+        let p = await fetch('https://jsonplaceholder.typicode.com/posts', options)
+        let response = await p.json()
+        return response
+    }
+
+    const getData = async (id) => {
+        let response = await fetch('https://jsonplaceholder.typicode.com/posts/' + id)
+        let r = await response.json()
+        return r
+    }
+
+    const mainFunc = async () => {
+        data = {
+            title: 'fasd',
+            body: 'gfre',
+            userId: 4,
+        }
+        let res = await CreateData(data)
+        console.log(res)
+        console.log(await getData(data.userId))
+    }
+    mainFunc()
+
+</script>

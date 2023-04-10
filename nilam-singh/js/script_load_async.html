@@ -1,0 +1,53 @@
+<html>
+    <body></body>
+</html>
+
+<script>
+ 
+    //callback
+    function loadScript(src, callback) {
+        let script = document.createElement('script');
+        script.src = src;
+
+        script.onload = () => callback(null, script);
+        script.onerror = () => callback(new Error(`Script load error for ${src}`));
+
+        document.head.append(script);
+    }
+
+    function callbackFunc(error, script) {
+        if (error) {
+            console.warn(error) //error if script not loaded in callback
+            return
+        }
+        console.log('Hello World!' + script.src);
+    }
+
+    loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js",callbackFunc)
+    
+
+    //promises
+    function loadScriptPromise(src) {
+        return new Promise(function(resolve, reject) {
+            let script = document.createElement('script');
+            script.src = src;
+
+            script.onload = () => resolve(script);
+            script.onerror = () => reject(new Error(`Script load error for ${src}`));
+
+            document.head.append(script);
+        });
+    }
+
+    let promise = loadScriptPromise("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js");
+
+    promise.then(
+        script => console.log(`${script.src} is loaded!`),
+        error => console.error(`Error: ${error.message}`)//promise error
+    );
+
+    promise.then(script => console.log('Another handler...'));
+
+    //aysnc await
+    
+</script>
